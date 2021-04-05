@@ -1,0 +1,36 @@
+/* 2) Implemente um programa que receba um conjunto de n pares de coordenadas e
+exiba todos os pares de coordenadas que estejam localizados em uma mesma
+distancia mínima (menor distância entre dois pontos da coleção). Atenção: mais de
+um par de pontos pode estar localizado na mesma distância mínima. O seu programa
+deve basear-se na estratégia de força bruta.
+*/
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    int pontoX[] = {3,4,10,11,8};
+    int pontoY[] = {5,6,7,8,3};
+    int tamanhoVetor = sizeof(pontoX)/sizeof(int);
+    float distanciaMinima = 999999;
+    
+    for(int x = 0; x<tamanhoVetor-1; x++) {
+        for(int y=x+1;y<tamanhoVetor;y++) {
+            float distancia = sqrt(pow(pontoX[x]-pontoX[y], 2) + pow(pontoY[x]-pontoY[y], 2));
+            if(distancia < distanciaMinima) {
+                distanciaMinima = distancia;
+            }
+        }
+    }
+    
+    printf("Distância mínima = %f\n", distanciaMinima);
+    printf("Os pontos de menor distancia pertece as coordenadas: \n");
+    
+    for(int x = 0; x<tamanhoVetor-1; x++) {
+        for(int y=x+1;y<tamanhoVetor;y++) {
+            float distancia = sqrt(pow(pontoX[x]-pontoX[y], 2) + pow(pontoY[x]-pontoY[y], 2));
+            if(distancia == distanciaMinima) {
+                printf("(%d, %d) - (%d, %d)\n",pontoX[x], pontoY[x], pontoX[y], pontoY[y]);
+            }
+        }
+    }
+}
