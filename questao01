@@ -1,0 +1,26 @@
+/*1) Implemente um programa que, dado um conjunto C de n inteiros e outro inteiro I,
+determinar os pares de inteiros de C cuja subtração é exatamente igual a I. Em
+seguida, análise a complexidade deste algoritmo. O seu programa deve basear-se na
+estratégia de força bruta.
+*/
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) { 
+        int vetorC[] = {4,7,1,10,15,16,3,30,26,5,20,11,2};
+        int tamanhoVetorC = sizeof(vetorC)/sizeof(int);
+        int i;
+    	printf("Digite um valor para I: ");
+  		scanf("%d", &i);
+    
+   for(int j = 0;j<tamanhoVetorC;j++){
+            for(int m=0;m<tamanhoVetorC;m++){
+                if(j!=m){
+                    int resultado = vetorC[j]-vetorC[m];
+                    if (resultado == i){
+                        printf("Pares: %.1d - %.1d = %.1d\n",vetorC[j],vetorC[m],resultado);
+                    }
+                }
+            }
+        }
+}
